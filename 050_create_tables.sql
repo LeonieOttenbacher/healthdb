@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Proband(
     firstname VARCHAR(50),
     lastname VARCHAR(50),
     Email VARCHAR(100),
-    gender ENUM('M','F','D'), -- Geschlecht des Probanden (männlich, weiblich, divers)
+    gender INT, -- Geschlecht des Probanden (männlich, weiblich, divers)
     birthday DATE,
     weight DECIMAL(5,2),  -- Körpergewicht des Probanden
     height DECIMAL(5,2), -- Körpergröße des Probanden
