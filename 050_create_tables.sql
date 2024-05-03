@@ -7,18 +7,25 @@ CREATE TABLE IF NOT EXISTS Laender (
 );
 
 # Tabelle für Probanden
-CREATE TABLE IF NOT EXISTS Probanden(
-    Probanden_ID INT AUTO_INCREMENT PRIMARY KEY,
-    Vorname VARCHAR(50),
-    Nachname VARCHAR(50),
+CREATE TABLE IF NOT EXISTS Proband(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
     Email VARCHAR(100),
-    Geschlecht ENUM('M','F','D'), -- Geschlecht des Probanden (männlich, weiblich, divers)
-    Geburtstag DATE,
-    KGewicht DECIMAL(5,2),  -- Körpergewicht des Probanden
-    KGroesse DECIMAL(5,2), -- Körpergröße des Probanden
+    gender ENUM('M','F','D'), -- Geschlecht des Probanden (männlich, weiblich, divers)
+    birthday DATE,
+    weight DECIMAL(5,2),  -- Körpergewicht des Probanden
+    height DECIMAL(5,2), -- Körpergröße des Probanden
+    health DECIMAL(5,2),
+    isactive BOOL default true,
     Land_ID INT, -- Verweis auf das Herkunftsland des Probanden
     updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, -- für Aktualisierungen
     FOREIGN KEY (Land_ID) REFERENCES Laender(Land_ID)
+);
+
+create table if not exists Gender(
+    id int auto_increment primary key ,
+    name VARCHAR(50)
 );
 
 
@@ -39,7 +46,7 @@ CREATE TABLE  Probanden_Krankheiten(
     Probanden_ID INT, -- Verweis auf den Probanden
     Krankheits_ID INT, -- Verweis auf die Krankheit
     PRIMARY KEY (Probanden_ID,Krankheits_ID),
-    FOREIGN KEY (Probanden_ID) REFERENCES Probanden(Probanden_ID), -- Fremdschlüsselbeziehung zur Probanden-Tabelle
+    FOREIGN KEY (Probanden_ID) REFERENCES Proband(id), -- Fremdschlüsselbeziehung zur Probanden-Tabelle
     FOREIGN KEY (Krankheits_ID) REFERENCES Krankheiten(Krankheits_ID) -- Fremdschlüsselbeziehung zur Krankheiten-Tabelle
 );
 
@@ -48,7 +55,7 @@ CREATE TABLE Probanden_Medikamente(
     Probanden_ID INT,
     Medikamente_ID INT,
     PRIMARY KEY (Probanden_ID,Medikamente_ID),
-    FOREIGN KEY (Probanden_ID) REFERENCES Probanden(Probanden_ID), -- Fremdschlüsselbeziehung zur Probanden-Tabelle
+    FOREIGN KEY (Probanden_ID) REFERENCES Proband(id), -- Fremdschlüsselbeziehung zur Probanden-Tabelle
     FOREIGN KEY (Medikamente_ID) REFERENCES Medikamente(Medikamenten_ID) -- Fremdschlüsselbeziehung zur Medikamente-Tabelle
 );
 

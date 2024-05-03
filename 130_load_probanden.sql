@@ -1,4 +1,4 @@
-INSERT INTO `22ita`.`probanden` (`Probanden_ID`, `Vorname`, `Nachname`, `Email`, `Geschlecht`, `Geburtstag`, `KGewicht`, `KGroesse`, `Land_ID`)
+INSERT INTO `22ita`.`Proband` (`id`, `firstname`, `lastname`, `Email`, `gender`, `birthday`, `weight`, `height`, `Land_ID`)
 VALUES (1, 'Kessiah', 'Traice', 'ktraice0@ibm.com', 'F', '1985-01-19', 84.00, 171.00, NULL),
        (2, 'Sebastien', 'Trayton', 'strayton1@sohu.com', 'M', '1996-05-16', 108.00, 161.60, NULL),
        (3, 'Nikola', 'Leddy', 'nleddy2@miitbeian.gov.cn', 'M', '1987-05-30', 77.30, 162.20, NULL),
