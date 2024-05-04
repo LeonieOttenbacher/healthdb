@@ -1,4 +1,4 @@
-#zählen der Duplikate
+#Zählen der Dupletten
 
 SELECT firstname, lastname, email, COUNT(*)
 FROM Proband
