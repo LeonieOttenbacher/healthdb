@@ -1,3 +1,5 @@
+-- Weist jedem Probanden zufällige Krankheiten zu
+
 DROP PROCEDURE IF EXISTS assign_illness;
 delimiter //
 CREATE PROCEDURE assign_illness(IN prob_id INT)

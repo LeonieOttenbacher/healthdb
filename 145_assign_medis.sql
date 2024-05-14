@@ -1,4 +1,5 @@
---  Umsetzung für Krankheit: Bluthochdruck (4) und Fettstoffwechselstörung -> Bekommt Medikamente Gesundix und Kannix
+--  Weist den entsprechenden Probanden mit jeweiligen Krankheiten die richtigen Medikamente zu
+-- Umsetzung für Krankheit: Bluthochdruck (4) und Fettstoffwechselstörung -> Bekommt Medikamente Gesundix und Kannix
 
 insert into probanden_medikamente (Probanden_ID, Medikamente_ID)
 select id, 4 from proband
