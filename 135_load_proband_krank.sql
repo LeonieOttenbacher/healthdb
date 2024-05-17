@@ -2,6 +2,7 @@
 
 DROP PROCEDURE IF EXISTS assign_illness;
 delimiter //
+-- kreirt die Anzahl der zuweisenden Krankheiten
 CREATE PROCEDURE assign_illness(IN prob_id INT)
 BEGIN
 	DECLARE ills INT DEFAULT FLOOR(RAND()*5+1);
@@ -18,15 +19,19 @@ delimiter ;
 
 drop procedure if exists illproband;
 delimiter //
+-- Diese Prozedur ruft die assign_illness-Prozedur für jeden Probanden in der Tabelle proband auf.
 create procedure illproband()
 BEGIN
     DECLARE done BOOL DEFAULT false;
     DECLARE probid INT;
+    -- Erstellen eines Cursors, der alle Probanden-IDs aus der Tabelle proband auswählt.
 	declare probandidcursor cursor for
 		select id from proband;
 	DECLARE CONTINUE HANDLER
         FOR NOT FOUND SET done = true;
 	open probandidcursor;
+    -- Schleife, um über jede Probanden-ID zu iterieren und die assign_illness-Prozedur für jeden Probanden aufzurufen.
+
     assign_ill: LOOP
 		fetch probandidcursor into probid;
         if done = true then

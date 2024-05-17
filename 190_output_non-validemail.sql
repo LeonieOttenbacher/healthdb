@@ -1,4 +1,4 @@
--- Sucht nicht valide Email-Adressen aus dem Datenbestand
+-- Sucht nicht valide Email-Adressen aus dem Datenbestand mit Regex
 
 SELECT Email
 FROM Proband
